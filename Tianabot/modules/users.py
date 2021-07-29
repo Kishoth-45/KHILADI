@@ -74,7 +74,7 @@ def broadcast(update: Update, context: CallbackContext):
         if to_group:
             for chat in chats:
                 try:
-                   context.bot.sendMessage(
+                    context.bot.sendMessage(
                         int(chat.chat_id),
                         to_send[1],
                         parse_mode="MARKDOWN",
@@ -98,7 +98,6 @@ def broadcast(update: Update, context: CallbackContext):
         update.effective_message.reply_text(
             f"Broadcast complete.\nGroups failed: {failed}.\nUsers failed: {failed_user}."
         )
-
 
 @run_async
 def log_user(update: Update, context: CallbackContext):
