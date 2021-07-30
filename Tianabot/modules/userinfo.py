@@ -239,24 +239,24 @@ def info(update: Update, context: CallbackContext):
         return
 
 
-    rep = message.reply_text("<code> °°° Ｓｃａｎ Ｕｓｅｒ °°° </code>", parse_mode=ParseMode.HTML)
+     rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"<b>┎━─━─「ᴜsᴇʀ ɪɴғᴏ」</b>\n"
-        f"✥ UID: <code>{user.id}</code>\n"
-        f"✥ F Name: {html.escape(user.first_name)}"
+        f"╒═══「<b> Appraisal results:</b> 」\n"
+        f"ID: <code>{user.id}</code>\n"
+        f"First Name: {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n✥ L Name: {html.escape(user.last_name)}"
+        text += f"\nLast Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n✥ Username: @{html.escape(user.username)}"
+        text += f"\nUsername: @{html.escape(user.username)}"
 
-    text += f"\n✥ Profile Link: {mention_html(user.id, 'link')}"
+    text += f"\nPermalink: {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\n✥ Existence: <code>{}</code>"
+        _stext = "\nPresence: <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
@@ -265,14 +265,14 @@ def info(update: Update, context: CallbackContext):
             status = status = bot.get_chat_member(chat.id, user.id).status
             if status:
                 if status in {"left", "kicked"}:
-                    text += _stext.format("Not Here")
+                    text += _stext.format("Not here")
                 elif status == "member":
-                    text += _stext.format("Yes Here")
+                    text += _stext.format("Detected")
                 elif status in {"administrator", "creator"}:
                     text += _stext.format("Admin")
     if user_id not in [bot.id, 777000, 1087968824]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>USER POWER:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>Health:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     try:
         user_member = chat.get_member(user.id)
