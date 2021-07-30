@@ -241,39 +241,30 @@ def info(update: Update, context: CallbackContext):
 
     rep = message.reply_text("<code> °°° Ｓｃａｎ Ｕｓｅｒ °°° </code>", parse_mode=ParseMode.HTML)
 
-    text = (
-        f"<b>┎━─━─「ᴜsᴇʀ ɪɴғᴏ」</b>\n"
-        f"✥ UID: <code>{user.id}</code>\n"
-        f"✥ F Name: {html.escape(user.first_name)}"
-    )
+     text = (f"<b>User Information:</b>\n"
+            f"🆔: <code>{user.id}</code>\n"
+            f"👤Name: {html.escape(user.first_name)}")
 
     if user.last_name:
-        text += f"\n✥ L Name: {html.escape(user.last_name)}"
+        text += f"\n🚹Last Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n✥ Username: @{html.escape(user.username)}"
+        text += f"\n♻️Username: @{html.escape(user.username)}"
 
-    text += f"\n✥ Profile Link: {mention_html(user.id, 'link')}"
+    text += f"\n☣️Permanent user link: {mention_html(user.id, 'link🚪')}"
 
-    if chat.type != "private" and user_id != bot.id:
-        _stext = "\n✥ Existence: <code>{}</code>"
-
-        afk_st = is_afk(user.id)
-        if afk_st:
-            text += _stext.format("AFK")
-        else:
-            status = status = bot.get_chat_member(chat.id, user.id).status
-            if status:
-                if status in {"left", "kicked"}:
-                    text += _stext.format("Not Here")
-                elif status == "member":
-                    text += _stext.format("Yes Here")
-                elif status in {"administrator", "creator"}:
-                    text += _stext.format("Admin")
-    if user_id not in [bot.id, 777000, 1087968824]:
-        userhp = hpmanager(user)
-        text += f"\n\n<b>USER POWER:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
-
+    num_chats = sql.get_user_num_chats(user.id)
+    text += f"\n🌐Chat count: <code>{num_chats}</code>"
+    text += "\n🎭Number of profile pics: {}".format(bot.get_user_profile_photos(user.id).total_count)
+   
+    try:
+        user_member = chat.get_member(user.id)
+        if user_member.status == 'administrator':
+            result = requests.post(f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}")
+            result = result.json()["result"]
+            if "custom_title" in result.keys():
+                custom_title = result['custom_title']
+                text += f"\n🛡This user holds the title⚜️ <b>{custom_title}</b> here."
     try:
         spamwtc = sw.get_ban(int(user.id))
         if spamwtc:
