@@ -5,7 +5,7 @@ import requests
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 
-from Tianabot import StartTime, dispatcher
+from Tianabot import StartTime, dispatcher, ALIVE_PIC
 from Tianabot.modules.helper_funcs.chat_status import sudo_plus
 from Tianabot.modules.disable import DisableAbleCommandHandler
 
