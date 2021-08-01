@@ -16,6 +16,7 @@ sites_list = {
     "Jikan": "https://api.jikan.moe/v3",
 }
 
+TIANA_IMG = f"{ALIVE_PIC}"
 
 def get_readable_time(seconds: int) -> str:
     count = 0
@@ -80,8 +81,7 @@ def ping(update: Update, context: CallbackContext):
     uptime = get_readable_time((time.time() - StartTime))
 
     message.edit_text(
-        "[KHILADI](https://telegra.ph/file/c362ebadbcc43f610cf28.mp4) \n"
-        "PONG!!\n"
+        TIANA_IMG, caption= "PONG!!\n"
         "<b>Time Taken:</b> <code>{}</code>\n"
         "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
         parse_mode=ParseMode.HTML,
