@@ -81,7 +81,7 @@ def ping(update: Update, context: CallbackContext):
     uptime = get_readable_time((time.time() - StartTime))
 
     message.edit_video(
-        TIANA_IMG, caption= ""🥊PONG!!\n"
+        TIANA_IMG, caption= "🥊PONG!!\n"
         "<b>⏰Time Taken:</b> <code>{}</code>\n"
         "<b>🔮Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
         parse_mode=ParseMode.HTML,
