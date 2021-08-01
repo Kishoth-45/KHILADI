@@ -80,7 +80,6 @@ def ping(update: Update, context: CallbackContext):
     telegram_ping = str(round((end_time - start_time) * 1000, 3)) + " ms"
     uptime = get_readable_time((time.time() - StartTime))
 
- else:
    update.effective_message.reply_video(
                 TIANA_IMG, caption= ""🥊PONG!!\n"
         "<b>⏰Time Taken:</b> <code>{}</code>\n"
