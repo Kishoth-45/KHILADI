@@ -4,7 +4,7 @@ from pathlib import Path
 
 from telethon import events
 
-from Tianabot import dp
+from Tianabot import db
 from Tianabot.services.telethon import tbot
 
 gbanned = db.gban
