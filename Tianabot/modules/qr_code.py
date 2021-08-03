@@ -1,16 +1,20 @@
+import glob
 import os
 from asyncio import sleep
 from datetime import datetime
 
+import html2text
+import requests
+from bing_image_downloader import downloader
 from requests import get, post
 from telethon.tl import functions, types
 
-from Tianabot.services.events import register
-from Tianabot.services.telethon import tbot as client
+from Tianabot import telethn as client
+from Tianabot.events import register
 
 
 def progress(current, total):
-    """Calculate and return the download progress with given arguments."""
+    """ Calculate and return the download progress with given arguments. """
     print(
         "Downloaded {} of {}\nCompleted {}".format(
             current, total, (current / total) * 100
@@ -41,9 +45,66 @@ async def is_register_admin(chat, user):
         return None
 
 
+@register(pattern="^/gs (.*)")
+async def _(event):
+    if event.fwd_from:
+        return
+    if event.is_group:
+        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
+            await event.reply(
+                " Hai.. You are not admin..  You can't use this command.. But you can use in my pm"
+            )
+            return
+    # SHOW_DESCRIPTION = False
+    input_str = event.pattern_match.group(
+        1
+    )  # + " -inurl:(htm|html|php|pls|txt) intitle:index.of \"last modified\" (mkv|mp4|avi|epub|pdf|mp3)"
+    input_url = "https://bots.shrimadhavuk.me/search/?q={}".format(input_str)
+    headers = {"USER-AGENT": "UniBorg"}
+    response = requests.get(input_url, headers=headers).json()
+    output_str = " "
+    for result in response["results"]:
+        text = result.get("title")
+        url = result.get("url")
+        description = result.get("description")
+        last = html2text.html2text(description)
+        output_str += "[{}]({})\n{}\n".format(text, url, last)
+    await event.reply(
+        "{}".format(output_str), link_preview=False, parse_mode="Markdown"
+    )
+
+
+@register(pattern="^/imge (.*)")
+async def img_sampler(event):
+    if event.fwd_from:
+        return
+    if event.is_group:
+        if not (await is_register_admin(event.input_chat, event.message.sender_id)):
+            await event.reply(".. You are not admin.. use in bot  pm")
+            return
+    query = event.pattern_match.group(1)
+    jit = f'"{query}"'
+    downloader.download(
+        jit,
+        limit=5,
+        output_dir="store",
+        adult_filter_off=False,
+        force_replace=False,
+        timeout=60,
+    )
+    os.chdir(f'./store/"{query}"')
+    types = ("*.png", "*.jpeg", "*.jpg")  # the tuple of file types
+    files_grabbed = []
+    for files in types:
+        files_grabbed.extend(glob.glob(files))
+    await event.client.send_file(event.chat_id, files_grabbed, reply_to=event.id)
+    os.remove(files_grabbed)
+    os.chdir("./")
+
+
 @register(pattern=r"^/getqr$")
 async def parseqr(qr_e):
-    """For .getqr command, get QR Code content from the replied photo."""
+    """ For .getqr command, get QR Code content from the replied photo. """
     if qr_e.fwd_from:
         return
     start = datetime.now()
@@ -66,7 +127,7 @@ async def parseqr(qr_e):
 
 @register(pattern=r"^/makeqr(?: |$)([\s\S]*)")
 async def make_qr(qrcode):
-    """For .makeqr command, make a QR Code containing the given content."""
+    """ For .makeqr command, make a QR Code containing the given content. """
     if qrcode.fwd_from:
         return
     start = datetime.now()
