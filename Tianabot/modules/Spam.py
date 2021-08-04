@@ -13,7 +13,7 @@ def spam(update: Update, context: CallbackContext):
         await asyncio.wait([e.respond(spam_message) for i in range(counter)])
         await e.delete()
         if LOGGER:
-            await e.bot.send_message(
+            await e.update.effective_message(
                 LOGGER_GROUP,
                 "#SPAM \n\n"
                 "Spam was executed successfully"
