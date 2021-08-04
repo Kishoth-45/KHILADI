@@ -5,9 +5,9 @@ from telethon.sessions import StringSession
 
 from Tianabot.sample_config import get_int_key, get_str_key
 
-STRING_SESSION = get_str_key("STRING_SESSION", required=True)
-API_ID = get_int_key("APP_ID", required=True)
-API_HASH = get_str_key("APP_HASH", required=True)
+STRING_SESSION = get_str_key("STRING_SESSION", required=False)
+API_ID = get_int_key("API_ID", required=True)
+API_HASH = get_str_key("API_HASH", required=True)
 
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
