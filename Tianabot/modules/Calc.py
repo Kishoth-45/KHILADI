@@ -2,7 +2,7 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import *
 
-FayasNoushad = Client(
+Tianabot = Client(
     "Calculator Bot",
     bot_token = os.environ["BOT_TOKEN"],
     api_id = int(os.environ["API_ID"]),
@@ -39,17 +39,7 @@ CALCULATE_BUTTONS = InlineKeyboardMarkup(
         ]]
     )
 
-@FayasNoushad.on_message(filters.command(["start"]))
-async def start(bot, update):
-    text = START_TEXT.format(update.from_user.mention)
-    reply_markup = START_BUTTONS
-    await update.reply_text(
-        text=text,
-        disable_web_page_preview=True,
-        reply_markup=reply_markup
-    )
-
-@FayasNoushad.on_message(filters.private & filters.command(["calc", "calculate", "calculator"]))
+@Tianabot.on_message(filters.private & filters.command(["calc", "calculate", "calculator"]))
 async def calculate(bot, update):
     await update.reply_text(
         text=CALCULATE_TEXT,
@@ -58,7 +48,7 @@ async def calculate(bot, update):
         quote=True
     )
 
-@FayasNoushad.on_callback_query()
+@Tianabot.on_callback_query()
 async def cb_data(bot, update):
         data = update.data
         try:
@@ -80,7 +70,7 @@ async def cb_data(bot, update):
         except Exception as error:
             print(error)
 
-@FayasNoushad.on_inline_query()
+@Tianabot.on_inline_query()
 async def inline(bot, update):
     data = update.query
     data = data.replace(" ", "")
@@ -126,4 +116,4 @@ async def inline(bot, update):
         except:
             pass
 
-FayasNoushad.run()
+Tianabot.run()
