@@ -4,7 +4,7 @@ from pyrogram.types import *
 
 Tianabot = Client(
     "Calculator Bot",
-    bot_token = os.environ["BOT_TOKEN"],
+    bot_token = os.environ["TOKEN"],
     api_id = int(os.environ["API_ID"]),
     api_hash = os.environ["API_HASH"]
 )
