@@ -207,6 +207,12 @@ def rlg(update: Update, context: CallbackContext):
 def decide(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.DECIDE))
+    
+    
+@run_async
+def cringe(update: Update, context: CallbackContext):
+    reply_gif = update.effective_message.reply_to_message.reply_gif if update.effective_message.reply_to_message else update.effective_message.reply_gif
+    reply_gif(random.choice(fun_strings.CRINGE))    
 
 
 @run_async
@@ -277,6 +283,7 @@ __help__ = """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
+CRINGE_HANDLER = DisableAbleCommandHandler("cringe", cringe)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
@@ -291,6 +298,7 @@ WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
+dispatcher.add_handler(CRINGE_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
@@ -305,11 +313,11 @@ dispatcher.add_handler(WEEBIFY_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
-    "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
+    "runs","cringe", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
     "table", "pat", "sanitize", "weebify",
 ]
 __handlers__ = [
-    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER, CRINGE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER
 ]
