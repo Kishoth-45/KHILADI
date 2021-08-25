@@ -25,31 +25,12 @@ def runs(update: Update, context: CallbackContext):
     
 @run_async
 def cringe(update: Update, context: CallbackContext):
-    bot = context.bot
-    args = context.args
-    message = update.effective_message
-
-    reply_to = message.reply_to_message if message.reply_to_message else message
-
-    curr_user = html.escape(message.from_user.first_name)
-    user_id = extract_user(message, args)
-
-    if user_id:
-        patted_user = bot.get_chat(user_id)
-        user1 = curr_user
-        user2 = html.escape(patted_user.first_name)
-
-    else:
-        user1 = bot.first_name
-        user2 = curr_user
-    
-    cringe_type = random.choice(("Sticker"))
-    if cringe_type == "Sticker":
-        try:
-            temp = random.choice(fun_strings.CRINGE_STICKERS)
-            reply_to.reply_sticker(temp)
-        except BadRequest:
-            cringe_type = "Text"    
+    reply_sticker = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
+    reply_text(random.choice(fun_strings.CRINGE_STICKERS))
 
 
 @run_async
