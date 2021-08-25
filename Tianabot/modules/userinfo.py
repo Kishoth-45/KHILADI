@@ -30,7 +30,7 @@ from Tianabot.modules.disable import DisableAbleCommandHandler
 from Tianabot.modules.sql.global_bans_sql import is_user_gbanned
 from Tianabot.modules.sql.afk_sql import is_afk, check_afk_status
 from Tianabot.modules.sql.users_sql import get_user_num_chats
-from Tianabot.modules.helper_funcs.chat_status import sudo_plus
+from Tianabot.modules.helper_funcs.chat_status import dev_plus
 from Tianabot.modules.helper_funcs.extraction import extract_user
 from Tianabot import telethn as MashaTelethonClient, TIGERS, DRAGONS, DEMONS
 
@@ -420,7 +420,7 @@ def set_about_me(update: Update, context: CallbackContext):
 
 
 @run_async
-@sudo_plus
+@dev_plus
 def stats(update: Update, context: CallbackContext):
     stats = "<b>📊 Current stats:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
