@@ -211,7 +211,7 @@ def decide(update: Update, context: CallbackContext):
     
 @run_async
 def cringe(update: Update, context: CallbackContext):
-    reply_gif = update.effective_message.reply_to_message.reply_gif if update.effective_message.reply_to_message else update.effective_message.reply_gif
+    reply_gif = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_gif(random.choice(fun_strings.CRINGE))    
 
 
