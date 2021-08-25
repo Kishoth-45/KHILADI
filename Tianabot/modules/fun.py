@@ -25,14 +25,13 @@ def runs(update: Update, context: CallbackContext):
     
 @run_async
 def cringe(update: Update, context: CallbackContext):
-    reply_sticker = (
-        update.effective_message.reply_to_message.reply_sticker
-        if update.effective_message.reply_to_message
-        else update.effective_message.reply_sricker
-    )
-    reply_sticker(random.choice(fun_strings.CRINGE_STICKERS))
-
-
+    if cringe_type == "Sticker":
+        try:
+            temp = random.choice(fun_strings.CRINGE_STICKERS)
+            reply_to.reply_sticker(temp)
+        except BadRequest:
+            cring_type = "Text"
+            
 @run_async
 def sanitize(update: Update, context: CallbackContext):
     message = update.effective_message
