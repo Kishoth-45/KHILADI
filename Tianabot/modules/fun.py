@@ -21,17 +21,8 @@ GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 @run_async
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
-    
-    
-@run_async
-def cringe(update: Update, context: CallbackContext):
-    if cringe_type == "Sticker":
-        try:
-            temp = random.choice(fun_strings.CRINGE_STICKERS)
-            reply_to.reply_sticker(temp)
-        except BadRequest:
-            cring_type = "Text"
-            
+
+
 @run_async
 def sanitize(update: Update, context: CallbackContext):
     message = update.effective_message
@@ -130,13 +121,25 @@ def pat(update: Update, context: CallbackContext):
         user1 = bot.first_name
         user2 = curr_user
 
-    pat_type = random.choice(("Sticker"))
+    pat_type = random.choice(("Text", "Gif", "Sticker"))
+    if pat_type == "Gif":
+        try:
+            temp = random.choice(fun_strings.PAT_GIFS)
+            reply_to.reply_animation(temp)
+        except BadRequest:
+            pat_type = "Text"
+
     if pat_type == "Sticker":
         try:
             temp = random.choice(fun_strings.PAT_STICKERS)
             reply_to.reply_sticker(temp)
         except BadRequest:
             pat_type = "Text"
+
+    if pat_type == "Text":
+        temp = random.choice(fun_strings.PAT_TEMPLATES)
+        reply = temp.format(user1=user1, user2=user2)
+        reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 @run_async
 @typing_action
@@ -256,7 +259,6 @@ def weebify(update: Update, context: CallbackContext):
 
 __help__ = """
  • `/runs`*:* reply a random string from an array of replies
- • `/cringe`*:* cringe
  • `/slap`*:* slap a user, or get slapped if not a reply
  • `/shrug`*:* get shrug XD
  • `/table`*:* get flip/unflip :v
@@ -280,7 +282,6 @@ __help__ = """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize)
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
-CRINGE_HANDLER = DisableAbleCommandHandler("cringe", cringe)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
@@ -295,7 +296,6 @@ WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
-dispatcher.add_handler(CRINGE_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
@@ -310,11 +310,11 @@ dispatcher.add_handler(WEEBIFY_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
-    "runs", "cringe", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
+    "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
     "table", "pat", "sanitize", "weebify",
 ]
 __handlers__ = [
-    RUNS_HANDLER, CRINGE_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER
 ]
