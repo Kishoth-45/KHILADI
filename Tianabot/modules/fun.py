@@ -26,11 +26,11 @@ def runs(update: Update, context: CallbackContext):
 @run_async
 def cringe(update: Update, context: CallbackContext):
     reply_sticker = (
-        update.effective_message.reply_to_message.reply_text
+        update.effective_message.reply_to_message.reply_sticker
         if update.effective_message.reply_to_message
-        else update.effective_message.reply_text
+        else update.effective_message.reply_sricker
     )
-    reply_text(random.choice(fun_strings.CRINGE_STICKERS))
+    reply_sticker(random.choice(fun_strings.CRINGE_STICKERS))
 
 
 @run_async
