@@ -211,7 +211,7 @@ def decide(update: Update, context: CallbackContext):
     
 @run_async
 def cringe(update: Update, context: CallbackContext):
-    update.message.reply_gif(random.choice(fun_strings.CRINGE))
+    update.message.reply_video(random.choice(fun_strings.CRINGE))
 
     
 @run_async
