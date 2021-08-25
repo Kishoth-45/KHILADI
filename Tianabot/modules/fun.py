@@ -10,6 +10,7 @@ from telegram.error import BadRequest
 
 import Tianabot.modules.fun_strings as fun_strings
 from Tianabot import dispatcher
+import Tianabot.modules.sql.nsfw_sql as sql
 from Tianabot.modules.disable import DisableAbleCommandHandler
 from Tianabot.modules.helper_funcs.alternate import send_message, typing_action
 from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
@@ -210,11 +211,17 @@ def decide(update: Update, context: CallbackContext):
     
     
 @run_async
-def cringe(update: Update, context: CallbackContext):
-    reply_gif = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
-    reply_gif(random.choice(fun_strings.CRINGE))    
-
-
+def cringe(update, context):
+    chat_id = update.effective_chat.id
+    if not update.effective_message.chat
+        is_nsfw = sql.is_nsfw(chat_id)
+        if not is_nsfw:
+            return
+    msg = update.effective_message
+    target = "cringe"
+    msg.reply_video(random.choice(fun_strings.CRINGE))
+    
+    
 @run_async
 def table(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
