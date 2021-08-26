@@ -422,19 +422,9 @@ def set_about_me(update: Update, context: CallbackContext):
 @run_async
 @dev_plus
 def stats(update: Update, context: CallbackContext):
-    process = subprocess.Popen(
-        "neofetch --stdout", shell=True, text=True, stdout=subprocess.PIPE
-    )
-    output = process.communicate()[0]
-    stats = (
-        "<b>Current stats:</b>\n"
-        + "\n"
-        + output
-        + "\n".join([mod.__stats__() for mod in STATS])
-    )
-    result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
+    stats = "📊 Current stats:\n" + "\n".join([mod.__stats__() for mod in STATS])
+    result = re.sub(r'(\d+)', r'<code>\1</code>', stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
-
 
 @run_async
 def about_bio(update: Update, context: CallbackContext):
