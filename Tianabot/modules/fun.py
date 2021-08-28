@@ -215,7 +215,7 @@ def decide(update: Update, context: CallbackContext):
 def khiladi(update, context):
     message = update.effective_message
     reply = random.choice(fun.KHILADI)
-    message.reply_video(reply, parse_mode=ParseMode.MARKDOWN)
+    message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
 
 @run_async
 def table(update: Update, context: CallbackContext):
