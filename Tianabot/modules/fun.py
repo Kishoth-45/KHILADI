@@ -4,7 +4,7 @@ import time
 
 from typing import Optional
 from telegram import ParseMode, Update, ChatPermissions
-from telegram.ext import CallbackContext, run_async
+from telegram.ext import CallbackContext, run_async CommandHandler, Filters
 from tswift import Song
 from telegram.error import BadRequest
 
