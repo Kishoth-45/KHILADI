@@ -210,6 +210,16 @@ def gifid(update: Update, context: CallbackContext):
     else:
         update.effective_message.reply_text("Please reply to a gif to get its ID.")
 
+@run_async
+def audioid(update: Update, context: CallbackContext):
+    msg = update.effective_message
+    if msg.reply_to_message and msg.reply_to_message.audio:
+        update.effective_message.reply_text(
+            f"Audio ID:\n<code>{msg.reply_to_message.audio.file_id}</code>",
+            parse_mode=ParseMode.HTML,
+        )
+    else:
+        update.effective_message.reply_text("Please reply to a audio to get its ID.")
 
 @run_async
 def info(update: Update, context: CallbackContext):
@@ -564,6 +574,7 @@ GET_BIO_HANDLER = DisableAbleCommandHandler("bio", about_bio)
 STATS_HANDLER = CommandHandler("stats", stats)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid)
+AUDIOID_HANDLER = DisableAbleCommandHandler("audioid", audioid)
 INFO_HANDLER = DisableAbleCommandHandler(("info", "book"), info)
 
 SET_ABOUT_HANDLER = DisableAbleCommandHandler("setme", set_about_me)
@@ -572,6 +583,7 @@ GET_ABOUT_HANDLER = DisableAbleCommandHandler("me", about_me)
 dispatcher.add_handler(STATS_HANDLER)
 dispatcher.add_handler(ID_HANDLER)
 dispatcher.add_handler(GIFID_HANDLER)
+dispatcher.add_handler(AUDIOID_HANDLER)
 dispatcher.add_handler(INFO_HANDLER)
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
@@ -583,6 +595,7 @@ __command_list__ = ["setbio", "bio", "setme", "me", "info"]
 __handlers__ = [
     ID_HANDLER,
     GIFID_HANDLER,
+    AUDIOID_HANDLER,
     INFO_HANDLER,
     SET_BIO_HANDLER,
     GET_BIO_HANDLER,
