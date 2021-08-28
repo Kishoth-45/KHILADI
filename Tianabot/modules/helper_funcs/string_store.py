@@ -1,0 +1,3 @@
+GDNIGHT = [
+    "`BAACAgUAAx0CRQzCwQACFkJhKix9cyoblsR0AfQRoQdXR9Y5sgACuAIAAlihOVW4axnmPV3Y4iAE`",
+]
