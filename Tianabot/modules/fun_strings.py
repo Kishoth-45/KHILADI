@@ -159,6 +159,11 @@ CRINGE = (
     "CgACAgUAAx0CRQzCwQACFQJhJeVTIMH_9dBTsA4Z2UwiQvkgMAACdwMAAj-mEFTGlK6BS9ZJVyAE",
 )
 
+SVIDEO = (
+    "https://telegra.ph/file/109337cbe8c913bf0d128.mp4",
+    "https://telegra.ph/file/9c12c1799d9f7d79e1706.mp4",
+)
+
 
 PING_STRING = (
     "PONG!!",
