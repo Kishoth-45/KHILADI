@@ -25,6 +25,11 @@ GIFS = [
     "CgACAgUAAx0CU_rCTAABAjdSX1s3fq5iEJ64YeQLKI8cD7CSuSEAAlUBAAJu09hW5iqWB0hTPD4bBA",
 ]
 
+KHILADI = [
+    "BAACAgUAAx0CRQzCwQACFkJhKix9cyoblsR0AfQRoQdXR9Y5sgACuAIAAlihOVW4axnmPV3Y4iAE",
+    "https://telegra.ph/file/62c0415d3589b5c6c1c6a.mp4",
+]
+
 SLAP_MASHA_TEMPLATES = (
     "Slap me one more time and I'll mute you.",
     "Stop slapping me. REEEEEEEEEEEEEE.",
