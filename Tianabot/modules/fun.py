@@ -10,7 +10,7 @@ from telegram.error import BadRequest
 
 import Tianabot.modules.fun_strings as fun_strings
 from Tianabot import dispatcher
-from Tianabot.modules.disable import DisableAbleCommandHandler
+from Tianabot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from Tianabot.modules.helper_funcs.alternate import send_message, typing_action
 from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
 from Tianabot.modules.helper_funcs.extraction import extract_user
