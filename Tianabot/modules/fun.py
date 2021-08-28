@@ -214,8 +214,8 @@ def decide(update: Update, context: CallbackContext):
 @typing_action
 def khiladi(update, context):
     message = update.effective_message
-    reply = random.choice(fun.KHILADI)
-    message.reply_text(reply, parse_mode=ParseMode.MARKDOWN)
+    reply = random.choice(fun_strings.KHILADI)
+    message.reply_video(reply, parse_mode=ParseMode.MARKDOWN)
 
 @run_async
 def table(update: Update, context: CallbackContext):
@@ -297,7 +297,7 @@ EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 KHILADI_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(khiladi|kishoth|@khiladiking45)"), khiladi, friendly="khiladi"
+    Filters.regex(r"(?i)(kishoth|khiladi|@khiladiking45)"), khiladi, friendly="khiladi"
 )
 
 dispatcher.add_handler(SANITIZE_HANDLER)
