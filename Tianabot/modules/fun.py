@@ -15,6 +15,8 @@ from Tianabot.modules.helper_funcs.alternate import send_message, typing_action
 from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
 from Tianabot.modules.helper_funcs.extraction import extract_user
 
+import Tianabot.modules.helper_funcs.string_store as fun
+
 GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE'
 
 
