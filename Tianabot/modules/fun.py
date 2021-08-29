@@ -45,9 +45,9 @@ def eightball(update: Update, context: CallbackContext):
     reply_text(random.choice(fun_strings.EIGHTBALL))
 
 @run_async
-def ca(update: Update, context: CallbackContext):
-    reply_audio = update.effective_message.reply_to_message.reply_audio if update.effective_message.reply_to_message else update.effective_message.reply_audio
-    reply_audio(random.choice(fun_strings.AUDIO))
+@typing_action
+def cm(update: Update, context: CallbackContext):
+    update.message.reply_video(random.choice(fun_strings.KHILADI))
     
 @run_async
 def slap(update: Update, context: CallbackContext):
