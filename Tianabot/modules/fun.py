@@ -4,13 +4,13 @@ import time
 
 from typing import Optional
 from telegram import ParseMode, Update, ChatPermissions
-from telegram.ext import CallbackContext, run_async
+from telegram.ext import CallbackContext, run_async, CommandHandler, Filters
 from tswift import Song
 from telegram.error import BadRequest
 
 import Tianabot.modules.fun_strings as fun_strings
 from Tianabot import dispatcher
-from Tianabot.modules.disable import DisableAbleCommandHandler
+from Tianabot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
 from Tianabot.modules.helper_funcs.alternate import send_message, typing_action
 from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
 from Tianabot.modules.helper_funcs.extraction import extract_user
@@ -44,7 +44,11 @@ def eightball(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.EIGHTBALL))
 
-
+@run_async
+def ca(update: Update, context: CallbackContext):
+    reply_audio = update.effective_message.reply_to_message.reply_audio if update.effective_message.reply_to_message else update.effective_message.reply_audio
+    reply_audio(random.choice(fun_strings.AUDIO))
+    
 @run_async
 def slap(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -291,6 +295,7 @@ BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
 RLG_HANDLER = DisableAbleCommandHandler("rlg", rlg)
 DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
+CA_HANDLER = DisableAbleCommandHandler("ca", ca)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 
@@ -302,6 +307,7 @@ dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
+dispatcher.add_handler(CA_HANDLER)
 dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
@@ -310,11 +316,11 @@ dispatcher.add_handler(WEEBIFY_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
-    "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
+    "runs", "slap", "roll", "toss", "shrug", "bluetext", "ca", "rlg", "decide",
     "table", "pat", "sanitize", "weebify",
 ]
 __handlers__ = [
     RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER
+    SANITIZE_HANDLER, EIGHTBALL_HANDLER, CA_HANDLER, WEEBIFY_HANDLER
 ]
