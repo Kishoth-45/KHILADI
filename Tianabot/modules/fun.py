@@ -4,18 +4,16 @@ import time
 
 from typing import Optional
 from telegram import ParseMode, Update, ChatPermissions
-from telegram.ext import CallbackContext, run_async, CommandHandler, Filters
+from telegram.ext import CallbackContext, run_async
 from tswift import Song
 from telegram.error import BadRequest
 
 import Tianabot.modules.fun_strings as fun_strings
 from Tianabot import dispatcher
-from Tianabot.modules.disable import DisableAbleCommandHandler, DisableAbleMessageHandler
+from Tianabot.modules.disable import DisableAbleCommandHandler
 from Tianabot.modules.helper_funcs.alternate import send_message, typing_action
 from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
 from Tianabot.modules.helper_funcs.extraction import extract_user
-
-import Tianabot.modules.helper_funcs.string_store as fun
 
 GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE'
 
@@ -23,13 +21,7 @@ GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 @run_async
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
-    
-    
-@run_async
-@typing_action
-def khiladi(update: Update, context: CallbackContext):
-    update.effective_message.reply_video(random.choice(fun_strings.KHILADI_STRINGS)
-                                    
+
 
 @run_async
 def sanitize(update: Update, context: CallbackContext):
@@ -129,7 +121,7 @@ def pat(update: Update, context: CallbackContext):
         user1 = bot.first_name
         user2 = curr_user
 
-    pat_type = random.choice(("Gif", "Sticker"))
+    pat_type = random.choice(("Text", "Gif", "Sticker"))
     if pat_type == "Gif":
         try:
             temp = random.choice(fun_strings.PAT_GIFS)
@@ -143,6 +135,11 @@ def pat(update: Update, context: CallbackContext):
             reply_to.reply_sticker(temp)
         except BadRequest:
             pat_type = "Text"
+
+    if pat_type == "Text":
+        temp = random.choice(fun_strings.PAT_TEMPLATES)
+        reply = temp.format(user1=user1, user2=user2)
+        reply_to.reply_text(reply, parse_mode=ParseMode.HTML)
 
 @run_async
 @typing_action
@@ -214,7 +211,8 @@ def rlg(update: Update, context: CallbackContext):
 @run_async
 def decide(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
-    reply_text(random.choice(fun_strings.DECIDE))  
+    reply_text(random.choice(fun_strings.DECIDE))
+
 
 @run_async
 def table(update: Update, context: CallbackContext):
@@ -295,9 +293,6 @@ DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
-KHILADI_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(kishoth|khiladi|@khiladiking45)"), khiladi, friendly="khiladi"
-)
 
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
@@ -312,7 +307,6 @@ dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(WEEBIFY_HANDLER)
-dispatcher.add_handler(KHILADI_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
@@ -322,5 +316,5 @@ __command_list__ = [
 __handlers__ = [
     RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER, KHILADI_HANDLER
+    SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER
 ]
