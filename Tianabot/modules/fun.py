@@ -23,7 +23,19 @@ GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 @run_async
 def runs(update: Update, context: CallbackContext):
     update.effective_message.reply_text(random.choice(fun_strings.RUN_STRINGS))
+    
+    
+@run_async
+@typing_action
+def khiladi(update: Update, context: CallbackContext):
+    update.effective_message.reply_video(random.choice(fun_strings.KHILADI_STRINGS)
 
+                                         
+@run_async
+def audio(update: Update, context: CallbackContext):
+    reply_audio = update.effective_message.reply_to_message.reply_audio if update.effective_message.reply_to_message else update.effective_message.reply_audio
+    reply_audio(random.choice(fun_strings.AUDIO))
+                                         
 
 @run_async
 def sanitize(update: Update, context: CallbackContext):
@@ -208,14 +220,7 @@ def rlg(update: Update, context: CallbackContext):
 @run_async
 def decide(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
-    reply_text(random.choice(fun_strings.DECIDE))
-    
-@run_async
-@typing_action
-def khiladi(update, context):
-    message = update.effective_message
-    reply = random.choice(fun_strings.KHILADI)
-    message.reply_video(reply, parse_mode=ParseMode.MARKDOWN)
+    reply_text(random.choice(fun_strings.DECIDE))  
 
 @run_async
 def table(update: Update, context: CallbackContext):
@@ -288,6 +293,7 @@ RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
+AUDIO_HANDLER = DisableAbleCommandHandler("audio", audio)
 TOSS_HANDLER = DisableAbleCommandHandler("toss", toss)
 SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
@@ -304,6 +310,7 @@ dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
+dispatcher.add_handler(AUDIO_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
@@ -317,11 +324,11 @@ dispatcher.add_handler(KHILADI_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
-    "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
+    "runs", "slap", "roll", "audio", "toss", "shrug", "bluetext", "rlg", "decide",
     "table", "pat", "sanitize", "weebify",
 ]
 __handlers__ = [
-    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, AUDIO_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER, KHILADI_HANDLER
 ]
