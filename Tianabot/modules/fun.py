@@ -297,8 +297,8 @@ DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
-CA_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(khiladi|kishoth)"), ca, friendly="ca"
+CM_HANDLER = DisableAbleMessageHandler(
+    Filters.regex(r"(?i)(khiladi|kishoth)"), cm, friendly="cm"
 )
 
 dispatcher.add_handler(SANITIZE_HANDLER)
@@ -309,7 +309,7 @@ dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
-dispatcher.add_handler(CA_HANDLER)
+dispatcher.add_handler(CM_HANDLER)
 dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
@@ -324,5 +324,5 @@ __command_list__ = [
 __handlers__ = [
     RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER, EIGHTBALL_HANDLER, CA_HANDLER, WEEBIFY_HANDLER
+    SANITIZE_HANDLER, EIGHTBALL_HANDLER, CM_HANDLER, WEEBIFY_HANDLER
 ]
