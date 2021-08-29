@@ -298,7 +298,7 @@ EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
 CA_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(khiladi|kishoth)"), kishoth, friendly="kishoth"
+    Filters.regex(r"(?i)(khiladi|kishoth)"), ca, friendly="ca"
 )
 
 dispatcher.add_handler(SANITIZE_HANDLER)
