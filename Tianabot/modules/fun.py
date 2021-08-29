@@ -29,13 +29,7 @@ def runs(update: Update, context: CallbackContext):
 @typing_action
 def khiladi(update: Update, context: CallbackContext):
     update.effective_message.reply_video(random.choice(fun_strings.KHILADI_STRINGS)
-
-                                         
-
-@run_async
-def aud(update: Update, context: CallbackContext):
-    reply_audio = update.effective_message.reply_to_message.reply_audio if update.effective_message.reply_to_message else update.effective_message.reply_audio
-    reply_audio(random.choice(fun_strings.AUDIO))
+                                    
 
 @run_async
 def sanitize(update: Update, context: CallbackContext):
@@ -293,7 +287,6 @@ RUNS_HANDLER = DisableAbleCommandHandler("runs", runs)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap)
 PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
 ROLL_HANDLER = DisableAbleCommandHandler("roll", roll)
-AUD_HANDLER = DisableAbleCommandHandler("aud", aud)
 TOSS_HANDLER = DisableAbleCommandHandler("toss", toss)
 SHRUG_HANDLER = DisableAbleCommandHandler("shrug", shrug)
 BLUETEXT_HANDLER = DisableAbleCommandHandler("bluetext", bluetext)
@@ -310,7 +303,6 @@ dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
 dispatcher.add_handler(PAT_HANDLER)
-dispatcher.add_handler(AUDIO_HANDLER)
 dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
@@ -324,11 +316,11 @@ dispatcher.add_handler(KHILADI_HANDLER)
 
 __mod_name__ = "FUN"
 __command_list__ = [
-    "runs", "slap", "roll", "aud", "toss", "shrug", "bluetext", "rlg", "decide",
+    "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
     "table", "pat", "sanitize", "weebify",
 ]
 __handlers__ = [
-    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, AUD_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
+    RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
     SANITIZE_HANDLER, EIGHTBALL_HANDLER, WEEBIFY_HANDLER, KHILADI_HANDLER
 ]
