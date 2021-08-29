@@ -31,11 +31,11 @@ def khiladi(update: Update, context: CallbackContext):
     update.effective_message.reply_video(random.choice(fun_strings.KHILADI_STRINGS)
 
                                          
+
 @run_async
 def aud(update: Update, context: CallbackContext):
     reply_audio = update.effective_message.reply_to_message.reply_audio if update.effective_message.reply_to_message else update.effective_message.reply_audio
     reply_audio(random.choice(fun_strings.AUDIO))
-                                         
 
 @run_async
 def sanitize(update: Update, context: CallbackContext):
