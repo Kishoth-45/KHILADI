@@ -224,12 +224,7 @@
          "description": "Required for wallpaper. Get your's from https://wall.alphacoders.com/",
          "required": false,
          "value": ""
-      },
-      "INFOPIC": {
-         "description": "set True or False ",
-         "required": false,
-         "value": "False"
-       }   
+      }
       
    }
 }
