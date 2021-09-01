@@ -2,7 +2,7 @@ import asyncio
 
 from pyrogram import filters
 
-from Tianabot import BOT_ID, BOT_NAME, SUDOERS, app
+from Tianabot import BOT_ID, BOT_NAME, sudo_plus, app
 from Tianabot.core.decorators.errors import capture_err
 from Tianabot.modules import ALL_MODULES
 from Tianabot.utils.dbfunctions import (get_blacklist_filters_count,
@@ -17,7 +17,7 @@ from Tianabot.utils.inlinefuncs import keywords_list
 
 
 @app.on_message(
-    filters.command("gstats") & filters.user(SUDOERS) & ~filters.edited
+    filters.command("gstats") & filters.user(sudo_plus) & ~filters.edited
 )
 @capture_err
 async def global_stats(_, message):
