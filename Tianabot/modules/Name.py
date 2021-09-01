@@ -5,8 +5,6 @@ from telethon.tl import functions, types
 from Tianabot.events import register as Tianabot
 
 
-
-
 @Tianabot(pattern="^/namehistory ?(.*)")
 async def _(event):
 
@@ -15,7 +13,7 @@ async def _(event):
         return
 
     if event.is_group:
-        if await is_register_admin(event.input_chat, event.message.sender_id):
+        if await is_user_admin(event.input_chat, event.message.sender_id):
             pass
         else:
             return
