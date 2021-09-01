@@ -37,7 +37,7 @@ async def _(event):
         return
 
     if event.is_group:
-        if await is_user_admin(event.input_chat, event.message.sender_id):
+        if await user_admin(event.input_chat, event.message.sender_id):
             pass
         else:
             return
