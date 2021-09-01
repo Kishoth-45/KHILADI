@@ -2,37 +2,27 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
 
 from Tianabot.events import register as Tianabot
-from Tianabot.services.telethon import tbot
 
 
 async def is_register_admin(chat, user):
-
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
 
         return isinstance(
-            (
-                await tbot(functions.channels.GetParticipantRequest(chat, user))
-            ).participant,
+            (await
+             client(functions.channels.GetParticipantRequest(chat,
+                                                           user))).participant,
             (types.ChannelParticipantAdmin, types.ChannelParticipantCreator),
         )
     if isinstance(chat, types.InputPeerChat):
 
-        ui = await tbot.get_peer_id(user)
-        ps = (
-            await tbot(functions.messages.GetFullChatRequest(chat.chat_id))
-        ).full_chat.participants.participants
+        ui = await client.get_peer_id(user)
+        ps = (await client(functions.messages.GetFullChatRequest(chat.chat_id)
+                         )).full_chat.participants.participants
         return isinstance(
             next((p for p in ps if p.user_id == ui), None),
             (types.ChatParticipantAdmin, types.ChatParticipantCreator),
         )
     return None
-
-
-async def silently_send_message(conv, text):
-    await conv.send_message(text)
-    response = await conv.get_response()
-    await conv.mark_read(message=response)
-    return response
 
 
 @Tianabot(pattern="^/namehistory ?(.*)")
@@ -73,7 +63,7 @@ async def _(event):
 
     lol = await event.reply("```Processing```")
 
-    async with ubot.conversation(chat) as conv:
+    async with Tianabot.conversation(chat) as conv:
 
         try:
 
