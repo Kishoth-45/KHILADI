@@ -1,4 +1,3 @@
-
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
 
@@ -36,7 +35,7 @@ async def silently_send_message(conv, text):
     return response
 
 
-@Daisy(pattern="^/namehistory ?(.*)")
+@Tianabot(pattern="^/namehistory ?(.*)")
 async def _(event):
 
     if event.fwd_from:
