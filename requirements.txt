@@ -72,4 +72,7 @@ pykeyboard
 Python_ARQ 
 markdown==3.3.3
 tzlocal~=2.0
-
+glitch_this
+NumPy
+opencv-python-headless
+Pillow
