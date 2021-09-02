@@ -9,7 +9,7 @@ from pyrogram import Client, errors
 from pymongo import MongoClient
 from telethon import TelegramClient
 
-from Tianabot.config import get_int_key, get_list_key, get_str_key
+from Tianabot.config import get_list_key, get_str_key
 
 StartTime = time.time()
 
