@@ -9,8 +9,6 @@ from pyrogram import Client, errors
 from pymongo import MongoClient
 from telethon import TelegramClient
 
-from Tianabot.config import get_list_key, get_str_key
-
 StartTime = time.time()
 
 # enable logging
@@ -229,7 +227,3 @@ from Tianabot.modules.helper_funcs.handlers import (
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
-
-
-# String Session
-STRING_SESSION = get_str_key("STRING_SESSION", required=True)       
