@@ -75,4 +75,3 @@ tzlocal~=2.0
 glitch_this
 NumPy
 opencv-python-headless
-Pillow
