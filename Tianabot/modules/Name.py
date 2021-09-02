@@ -2,6 +2,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl import functions, types
 
 from Tianabot.events import register as Tianabot
+from Tianabot import client
 
 
 async def is_register_admin(chat, user):
