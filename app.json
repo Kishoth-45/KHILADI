@@ -224,7 +224,12 @@
          "description": "Required for wallpaper. Get your's from https://wall.alphacoders.com/",
          "required": false,
          "value": ""
-      }
-      
+      },
+      "STRING_SESSION": {
+         "description": "run repl run And get your String Session",
+         "value": "",
+         "required": "True",
+     }   
+       
    }
 }
