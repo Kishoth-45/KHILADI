@@ -205,6 +205,20 @@ else:
     except:
         sw = None
         LOGGER.warning("Can't connect to SpamWatch!")
+        
+if STRING_SESSION:
+        ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
+    else:
+        sys.exit(1)
+
+    try:
+        ubot.start()
+    except BaseException:
+        print("Network Error !")
+        sys.exit(1)
+
+else:
+    sys.exit(1)        
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
@@ -231,3 +245,4 @@ from Tianabot.modules.helper_funcs.handlers import (
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
+
