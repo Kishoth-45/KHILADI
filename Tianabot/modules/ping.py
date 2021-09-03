@@ -8,6 +8,7 @@ from telegram.ext import CallbackContext, run_async
 from Tianabot import StartTime, dispatcher, ALIVE_PIC
 from Tianabot.modules.helper_funcs.chat_status import sudo_plus
 from Tianabot.modules.disable import DisableAbleCommandHandler
+from telegram.utils.helpers import escape_markdown
 
 sites_list = {
     "Telegram": "https://api.telegram.org",
@@ -81,7 +82,7 @@ def ping(update: Update, context: CallbackContext):
     uptime = get_readable_time((time.time() - StartTime))
 
     message.edit_text(
-        "CgACAgUAAx0CRQzCwQACFNNhJPK5MgXbNKViIKsROffaeb7sCAACYwQAAijhIVTMIS6TY7GUDCAE \n"
+        "[🦋⃟ƓƠƊ ƠƑ ƛƝʆЄԼ𝄞✿‌᭄](https://telegra.ph/file/026d1b154f6e78a142e98.jpg) \n"
         "PONG!!\n"
         "<b>Time Taken:</b> <code>{}</code>\n"
         "<b>Service uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
