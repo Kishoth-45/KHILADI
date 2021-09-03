@@ -19,7 +19,7 @@ from Tianabot.events import register
 
 client = MongoClient()
 client = MongoClient(MONGO_DB_URI)
-db = client["missjuliarobot"]
+db = client["darkuserbot"]
 approved_users = db.approve
 
 
