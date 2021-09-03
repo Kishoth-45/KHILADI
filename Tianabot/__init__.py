@@ -10,6 +10,8 @@ from pymongo import MongoClient
 from telethon import TelegramClient
 
 StartTime = time.time()
+CMD_LIST = {}
+CMD_HELP = {}
 
 # enable logging
 logging.basicConfig(
@@ -104,6 +106,7 @@ if ENV:
     IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
     IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
     tbot = TelegramClient(None, API_ID, API_HASH)
+    REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
     
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
     CMD_HELP = {}
