@@ -1,4 +1,4 @@
-from julia import CMD_HELP
+from Tianabot import CMD_HELP
 from Tianabot import telethn as tbot
 from Tianabot import MONGO_DB_URI
 from pymongo import MongoClient
