@@ -210,7 +210,9 @@ else:
 ubot = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot.start() 
-
+except:
+        ubot = None
+        LOGGER.warning("Can't connect to SpamWatch!")
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
 telethn = TelegramClient("masha", API_ID, API_HASH)
