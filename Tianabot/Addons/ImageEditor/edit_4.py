@@ -8,9 +8,7 @@ import numpy as np
 import requests
 from PIL import Image, ImageDraw, ImageOps
 
-from DaisyX.config import get_str_key
-
-RemoveBG_API = get_str_key("REM_BG_API_KEY", required=False)
+REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
 
 
 async def rotate_90(client, message):
