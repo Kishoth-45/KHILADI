@@ -228,6 +228,11 @@
          "description": "Required for wallpaper. Get your's from https://wall.alphacoders.com/",
          "required": false,
          "value": ""
-      }
+      },
+      "VIRUS_API_KEY": {
+         "description": "Get one from https://cloudmersive.com/virus-api",
+         "value": "",
+         "required": false
+      }     
    }
 }
