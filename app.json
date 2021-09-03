@@ -53,6 +53,10 @@
          "description": "Your user ID as an integer.",
          "required": true,
          "value": ""
+      },
+      "REM_BG_API_KEY": {
+         "description": "Get your own API key from https://www.remove.bg/",
+         "required": false
       },   
       "BOT_ID": {
          "description": "Your bot ID.. Use any other bot to get it.",
