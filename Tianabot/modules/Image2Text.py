@@ -21,7 +21,7 @@ db = client["darkuserbot"]
 approved_users = db.approve
 
 configuration = cloudmersive_ocr_api_client.Configuration()
-configuration.api_id["Apiid"] = VIRUS_API_ID
+configuration.api_key["Apikey"] = VIRUS_API_KEY
 api_instance = cloudmersive_ocr_api_client.ImageOcrApi(
     cloudmersive_ocr_api_client.ApiClient(configuration)
 )
