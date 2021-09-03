@@ -37,14 +37,8 @@ async def _(event):
     HELP_STR = "use `/rmbg` as reply to a media"
     if event.fwd_from:
         return
-    approved_userss = approved_users.find({})
-    for ch in approved_userss:
-        iid = ch["id"]
-        userss = ch["user"]
     if event.is_group:
         if await is_register_admin(event.input_chat, event.message.sender_id):
-            pass
-        elif event.chat_id == iid and event.sender_id == userss:
             pass
         else:
             return
@@ -87,11 +81,10 @@ async def _(event):
         await event.reply("Background Removed in {} seconds".format(ms))
     else:
         await event.reply(
-            "remove.bg API returned Errors. Please report to @MissJuliaRobotSupport\n`{}".format(
+            "remove.bg API returned Errors. Please report to @DaisySupport_Official\n`{}".format(
                 output_file_name.content.decode("UTF-8")
             )
         )
-
 
 def ReTrieveFile(input_file_name):
     headers = {
@@ -108,7 +101,6 @@ def ReTrieveFile(input_file_name):
         stream=True,
     )
     return r
-
 
 file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
