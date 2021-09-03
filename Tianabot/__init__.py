@@ -89,6 +89,7 @@ if ENV:
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
     STRICT_GMUTE = bool(os.environ.get('STRICT_GMUTE', True))
+    STRING_SESSION  = bool(os.environ.get("STRING_SESSION ", False))
     WORKERS = int(os.environ.get("WORKERS", 8))
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
     ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
@@ -108,7 +109,6 @@ if ENV:
     IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
     tbot = TelegramClient(None, API_ID, API_HASH)
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
-    VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
     CMD_HELP = {}
