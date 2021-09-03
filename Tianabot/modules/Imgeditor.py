@@ -1,4 +1,3 @@
-
 from pyrogram import filters
 from pyrogram.types import (
     CallbackQuery,
@@ -31,6 +30,16 @@ from Tianabot.Addons.ImageEditor.edit_3 import (  # pylint:disable=import-error
     blue_border,
     green_border,
     red_border,
+)
+from Tianabot.Addons.ImageEditor.edit_4 import (  # pylint:disable=import-error
+    inverted,
+    removebg_plain,
+    removebg_sticker,
+    removebg_white,
+    rotate_90,
+    rotate_180,
+    rotate_270,
+    round_sticker,
 )
 from Tianabot.Addons.ImageEditor.edit_5 import (  # pylint:disable=import-error
     normalglitch_1,
