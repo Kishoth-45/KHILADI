@@ -232,7 +232,7 @@ async def inverted(client, message):
 
 async def removebg_plain(client, message):
     try:
-        if not (RemoveBG_API == ""):
+        if not (REM_BG_API_KEY == ""):
             userid = str(message.chat.id)
             if not os.path.isdir(f"./DOWNLOADS/{userid}"):
                 os.makedirs(f"./DOWNLOADS/{userid}")
@@ -251,7 +251,7 @@ async def removebg_plain(client, message):
                     "https://api.remove.bg/v1.0/removebg",
                     files={"image_file": open(download_location, "rb")},
                     data={"size": "auto"},
-                    headers={"X-Api-Key": RemoveBG_API},
+                    headers={"X-Api-Key": REM_BG_API_KEY},
                 )
                 if response.status_code == 200:
                     with open(f"{edit_img_loc}", "wb") as out:
@@ -292,7 +292,7 @@ async def removebg_plain(client, message):
 
 async def removebg_white(client, message):
     try:
-        if not (RemoveBG_API == ""):
+        if not (REM_BG_API_KEY == ""):
             userid = str(message.chat.id)
             if not os.path.isdir(f"./DOWNLOADS/{userid}"):
                 os.makedirs(f"./DOWNLOADS/{userid}")
@@ -311,7 +311,7 @@ async def removebg_white(client, message):
                     "https://api.remove.bg/v1.0/removebg",
                     files={"image_file": open(download_location, "rb")},
                     data={"size": "auto"},
-                    headers={"X-Api-Key": Config.RemoveBG_API},
+                    headers={"X-Api-Key": Config.REM_BG_API_KEY},
                 )
                 if response.status_code == 200:
                     with open(f"{edit_img_loc}", "wb") as out:
@@ -352,7 +352,7 @@ async def removebg_white(client, message):
 
 async def removebg_sticker(client, message):
     try:
-        if not (RemoveBG_API == ""):
+        if not (REM_BG_API_KEY == ""):
             userid = str(message.chat.id)
             if not os.path.isdir(f"./DOWNLOADS/{userid}"):
                 os.makedirs(f"./DOWNLOADS/{userid}")
@@ -371,7 +371,7 @@ async def removebg_sticker(client, message):
                     "https://api.remove.bg/v1.0/removebg",
                     files={"image_file": open(download_location, "rb")},
                     data={"size": "auto"},
-                    headers={"X-Api-Key": RemoveBG_API},
+                    headers={"X-Api-Key": REM_BG_API_KEY},
                 )
                 if response.status_code == 200:
                     with open(f"{edit_img_loc}", "wb") as out:
