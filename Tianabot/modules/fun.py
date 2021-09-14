@@ -44,10 +44,6 @@ def eightball(update: Update, context: CallbackContext):
     reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
     reply_text(random.choice(fun_strings.EIGHTBALL))
 
-@run_async
-@typing_action
-def cm(update: Update, context: CallbackContext):
-    update.message.reply_video(random.choice(fun_strings.KHILADI))
     
 @run_async
 def slap(update: Update, context: CallbackContext):
@@ -181,7 +177,11 @@ def roll(update: Update, context: CallbackContext):
 @run_async
 def toss(update: Update, context: CallbackContext):
     update.message.reply_text(random.choice(fun_strings.TOSS))
-
+    
+    
+@run_async
+def ran(update: Update, context: CallbackContext):
+    update.message.reply_video("BAACAgQAAx0CX1IIhgACA_lhQJDYlYAqtRCgdXkp9tEEPDZtEQACRg0AAm1F8FE9HbSDy4wT7CAE")
 
 @run_async
 def shrug(update: Update, context: CallbackContext):
@@ -297,9 +297,8 @@ DECIDE_HANDLER = DisableAbleCommandHandler("decide", decide)
 EIGHTBALL_HANDLER = DisableAbleCommandHandler("8ball", eightball)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table)
 WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify)
-CM_HANDLER = DisableAbleMessageHandler(
-    Filters.regex(r"(?i)(khiladi|kishoth)"), cm, friendly="cm"
-)
+RAN_HANDLER = DisableAbleCommandHandler("ran", ran)
+
 
 dispatcher.add_handler(SANITIZE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
@@ -309,7 +308,7 @@ dispatcher.add_handler(ROLL_HANDLER)
 dispatcher.add_handler(TOSS_HANDLER)
 dispatcher.add_handler(SHRUG_HANDLER)
 dispatcher.add_handler(EIGHTBALL_HANDLER)
-dispatcher.add_handler(CM_HANDLER)
+dispatcher.add_handler(RAN_HANDLER)
 dispatcher.add_handler(BLUETEXT_HANDLER)
 dispatcher.add_handler(RLG_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
@@ -319,10 +318,10 @@ dispatcher.add_handler(WEEBIFY_HANDLER)
 __mod_name__ = "FUN"
 __command_list__ = [
     "runs", "slap", "roll", "toss", "shrug", "bluetext", "rlg", "decide",
-    "table", "pat", "sanitize", "weebify",
+    "table", "pat", "sanitize", "weebify", "ran",
 ]
 __handlers__ = [
     RUNS_HANDLER, SLAP_HANDLER, PAT_HANDLER, ROLL_HANDLER, TOSS_HANDLER,
     SHRUG_HANDLER, BLUETEXT_HANDLER, RLG_HANDLER, DECIDE_HANDLER, TABLE_HANDLER,
-    SANITIZE_HANDLER, EIGHTBALL_HANDLER, CM_HANDLER, WEEBIFY_HANDLER
+    SANITIZE_HANDLER, EIGHTBALL_HANDLER, RAN_HANDLER, WEEBIFY_HANDLER
 ]
