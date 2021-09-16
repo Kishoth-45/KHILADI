@@ -84,13 +84,13 @@ async def lego(event):
  await event.reply('Creating your logo...wait!')
  try:
     text = event.pattern_match.group(1)
-    img = Image.open('./AnkiVector/resources/blackbg.jpg')
+    img = Image.open('./Tianabot/resources/blackbg.jpg')
     draw = ImageDraw.Draw(img)
     image_widthz, image_heightz = img.size
     pointsize = 500
     fillcolor = "gold"
     shadowcolor = "blue"
-    font = ImageFont.truetype("./AnkiVector/resources/Chopsic.otf", 330)
+    font = ImageFont.truetype("./Tianabot/resources/Chopsic.otf", 330)
     w, h = draw.textsize(text, font=font)
     h += int(h*0.21)
     image_width, image_height = img.size
@@ -98,13 +98,13 @@ async def lego(event):
     x = (image_widthz-w)/2
     y= ((image_heightz-h)/2+6)
     draw.text((x, y), text, font=font, fill="black", stroke_width=25, stroke_fill="yellow")
-    fname2 = "AnkiVectorLogo.png"
+    fname2 = "Tianabot.png"
     img.save(fname2, "png")
-    await tbot.send_file(event.chat_id, fname2, caption="Made By @TheAnkiVectorBot ⚡️")
+    await tbot.send_file(event.chat_id, fname2, caption="Made By @Tianabot ⚡️")
     if os.path.exists(fname2):
             os.remove(fname2)
  except Exception as e:
-   await event.reply(f'Error Go to Help From  @AnkiSupport_Official, {e}')
+   await event.reply(f'Error Go to Help From  @Tianabot, {e}')
 
 @register(pattern="^/biglogo ?(.*)")
 async def lego(event):
