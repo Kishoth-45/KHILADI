@@ -1,5 +1,6 @@
-from sqlalchemy import Boolean, Column, Integer, String, UnicodeText
-from Tianabot.modules.sql import BASE, SESSION
+from sqlalchemy import Column, String
+
+from Tianabot.sql import BASE, SESSION
 
 
 class Nightmode(BASE):
