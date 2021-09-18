@@ -4,7 +4,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telethon import functions
 from Tianabot.events import register
 from Tianabot import telethn, OWNER_ID
-from Tianabot.pyrogramee.pluginshelper import admins_only
+from Tianabot.pyrogramee.pluginshelper import is_admin
 import os
 from telethon import *
 from telethon import Button, custom, events
@@ -47,10 +47,10 @@ async def close_ws(event):
         await event.reply("You Can Only Nsfw Watch in Groups.")
         return
     input_str = event.pattern_match.group(1)
-    if not await admins_only(event, BOT_ID):
+    if not await is_admin(event, BOT_ID):
         await event.reply("`I Should Be Admin To Do This!`")
         return
-    if await admins_only(event, event.message.sender_id):
+    if await is_admin(event, event.message.sender_id):
         if (
             input_str == "on"
             or input_str == "On"
