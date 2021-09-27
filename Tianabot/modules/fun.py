@@ -16,7 +16,7 @@ from Tianabot.modules.helper_funcs.chat_status import (is_user_admin)
 from Tianabot.modules.helper_funcs.extraction import extract_user
 
 GIF_ID = 'CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE'
-
+GIFS = 'CgACAgUAAx0CX1IIhgACBIdhUbmCiCdGPqgppqsms0xY7WB-RQACYwQAAijhIVTMIS6TY7GUDCEE'
 
 @run_async
 def runs(update: Update, context: CallbackContext):
@@ -181,8 +181,8 @@ def toss(update: Update, context: CallbackContext):
     
 @run_async
 def ran(update: Update, context: CallbackContext):
-    update.message.reply_video(
-       "BAACAgUAAx0CX1IIhgACBAJhQJ5rsUJxxsmN2GHWNbJJ9gMtMAACIgUAAtfTwVVasSV7IvTWxCAE", caption= "Ranged Tamil movie 700mb \n Uploaded By Anjel \n If you want More prints ask @Movie_Request2"
+    update.message.reply_document(
+       "BQACAgQAAxkBAAIBO2FRvFWWqNz2QeqXRVBqoYglh_nuAAJzCQACYDQpUpqS5VFggGSoIQQ", caption= "Anabelle sethupathi Tamil movie 700mb \n Uploaded By Anjel \n If you want More prints ask @Movie_Request2"
     )
 
 @run_async
@@ -228,7 +228,7 @@ def table(update: Update, context: CallbackContext):
 @run_async
 def sp(update: Update, context: CallbackContext):
     reply_animation = update.effective_message.reply_to_message.reply_animation if update.effective_message.reply_to_message else update.effective_message.reply_animation
-    reply_animation("CgACAgUAAx0CX1IIhgACBIdhUbmCiCdGPqgppqsms0xY7WB-RQACYwQAAijhIVTMIS6TY7GUDCEE")    
+    reply_animation(GIFS)    
 
 normiefont = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
