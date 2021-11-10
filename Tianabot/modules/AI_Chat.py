@@ -12,7 +12,7 @@ from pyrogram import filters
 from Tianabot import BOT_ID
 from Tianabot.helper_extra.aichat import add_chat, get_session, remove_chat
 from Tianabot.pyrogramee.inlinehelper import arq
-from Tianabot.pyrogramee.pluginhelpers import admins_only, edit_or_reply
+from Tianabot.pyrogramee.pluginshelper import admins_only, edit_or_reply
 from Tianabot import pbot as daisyx
 
 translator = google_translator()
