@@ -21,7 +21,7 @@ from odmantic import AIOEngine
 from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 
-from Tianabot import log
+from Tianabot.utils.logger import log
 from Tianabot.config import get_int_key, get_str_key
 
 MONGO_URI = get_str_key("MONGO_URI")
