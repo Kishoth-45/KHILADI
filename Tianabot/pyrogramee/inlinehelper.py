@@ -22,8 +22,8 @@ from search_engine_parser import GoogleSearch
 
 from Tianabot import BOT_USERNAME, OWNER_ID
 from Tianabot.config import get_str_key
-from Tianabot.pyrogramee.pluginhelpers import convert_seconds_to_minutes as time_convert
-from Tianabot.pyrogramee.pluginhelpers import fetch
+from Tianabot.pyrogramee.pluginshelper import convert_seconds_to_minutes as time_convert
+from Tianabot.pyrogramee.pluginshelper import fetch
 from Tianabot import pbot
 
 ARQ_API = get_str_key("ARQ_API", required=True)
