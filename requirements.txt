@@ -78,5 +78,5 @@ opencv-python-headless
 python-barcode==0.13.1
 cloudmersive-ocr-api-client==3.0.1
 cloudmersive_virus_api_client==3.0.1
-
+loguru
 
