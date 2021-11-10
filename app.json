@@ -233,6 +233,20 @@
          "description": "Get one from https://cloudmersive.com/virus-api",
          "value": "",
          "required": false
-      }     
+      },
+      "MONGO_URI": {
+          "description": "Create A Database In Mongodb And Get URL",
+          "value": "",
+          "required": true
+      },   
+     "MONGO_PORT": {
+           "description": "Dont change",
+           "value": "27017",
+           "required": false
+    },
+     "MONGO_DB": {
+          "description": "Don't change.",
+          "value": "DaisyX",
+         "required": false
    }
 }
