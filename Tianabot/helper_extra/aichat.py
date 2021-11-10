@@ -1,4 +1,4 @@
-from Tianabot import mongodb as db_x
+from Tianabot.mongo import mongodb as db_x
 
 lydia = db_x["CAHTBOT"]
 
