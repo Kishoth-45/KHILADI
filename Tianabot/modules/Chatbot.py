@@ -202,7 +202,7 @@ def chatbot(update: Update, context: CallbackContext):
 
         return
 
-	    if message.text and not message.document:
+	    if message.text:
 
         if not kuki_message(context, message):
 
