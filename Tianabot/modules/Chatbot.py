@@ -3,7 +3,7 @@ import re
 import os
 import html
 import requests
-import TGNRobot.modules.sql.kuki_sql as sql
+import Tianabot.modules.sql.kuki_sql as sql
 
 from time import sleep
 from telegram import ParseMode
