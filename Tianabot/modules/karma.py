@@ -1,9 +1,9 @@
 from Tianabot import pbot, BOT_USERNAME
-from Cutiepii_Robot.utils.errors import capture_err
-from Cutiepii_Robot.utils.permissions import adminsOnly
-from Cutiepii_Robot.utils.dbfunctions.karmaa import (alpha_to_int, get_karma,
+from Tianabot.utils.error import capture_err
+from Tianabot.utils.permissions import adminsOnly
+from Tianabot.utils.dbfunctions import (alpha_to_int, get_karma,
                                    get_karmas, int_to_alpha, update_karma)   
-from Cutiepii_Robot.utils.dbfunctions.karmaa import is_karma_on, karma_off, karma_on
+from Tianabot.utils.dbfunctions import is_karma_on, karma_off, karma_on
 
 karma_positive_group = 3
 karma_negative_group = 4
