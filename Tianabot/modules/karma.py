@@ -1,6 +1,6 @@
 from Tianabot import pbot, BOT_USERNAME
 from Tianabot.utils.error import capture_err
-from Tianabot.utils.permissions import adminsOnly
+from Tianabot.pyrogramee.pluginhelpers import admins_only
 from Tianabot.utils.dbfunctions import (alpha_to_int, get_karma,
                                    get_karmas, int_to_alpha, update_karma)   
 from Tianabot.utils.dbfunctions import is_karma_on, karma_off, karma_on
@@ -146,7 +146,7 @@ async def command_karma(_, message):
 
 
 @pbot.on_message(filters.command("karmas") & ~filters.private)
-@adminsOnly("can_change_info")
+@admins_only("can_change_info")
 async def captcha_state(_, message):
     usage = "**Usage:**\n/karmas [on|off]"
     if len(message.command) != 2:
