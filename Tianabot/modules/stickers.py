@@ -450,7 +450,9 @@ def makepack_internal(
     else:
         msg.reply_text("Failed to create sticker pack. Possibly due to blek mejik.")
 
-        
+    
+Credit = "This Plugin Made by Kittu (@A_viyu), if you're using this code in your bot. there is no issue but don't remove this line"     
+    
 @Tiana(pattern="^/mmf ?(.*)")
 async def handler(event):
     if event.fwd_from:
