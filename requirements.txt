@@ -80,4 +80,4 @@ cloudmersive-ocr-api-client==3.0.1
 cloudmersive_virus_api_client==3.0.1
 loguru
 dnspython # needed to connect to cloud MongoDB instances
-
+cloudscraper
