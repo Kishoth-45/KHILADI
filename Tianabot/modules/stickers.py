@@ -1,6 +1,8 @@
 import os
 import math
 import requests
+import cloudscraper
+import textwrap
 import urllib.request as urllib
 from PIL import Image, ImageFont, ImageDraw
 from html import escape
